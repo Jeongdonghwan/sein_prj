@@ -1,0 +1,79 @@
+{% extends "admin/base.html" %}
+{% block title %}문의 목록 | 세인약품 어드민{% endblock %}
+{% block content %}
+{% set st_class = {'신규': 'new', '상담중': 'ing', '완료': 'done'} %}
+
+<div class="page-head">
+  <h1>문의 목록
+    {% if new_count %}<span class="badge-new big">신규 {{ new_count }}</span>{% endif %}
+  </h1>
+  <a class="btn-line" href="{{ url_for('admin_export', status=status, type=itype, q=q) }}">CSV 다운로드</a>
+</div>
+
+<form class="filters" method="get" action="{{ url_for('admin_list') }}">
+  <select name="status">
+    <option value="">상태 전체</option>
+    {% for s in STATUSES %}
+      <option value="{{ s }}" {% if status == s %}selected{% endif %}>{{ s }}</option>
+    {% endfor %}
+  </select>
+  <select name="type">
+    <option value="">유형 전체</option>
+    {% for t in INQUIRY_TYPES %}
+      <option value="{{ t }}" {% if itype == t %}selected{% endif %}>{{ t }}</option>
+    {% endfor %}
+  </select>
+  <input type="text" name="q" value="{{ q }}" placeholder="이름 / 연락처 검색">
+  <button type="submit" class="btn-gold">검색</button>
+  <a class="btn-line" href="{{ url_for('admin_list') }}">초기화</a>
+</form>
+
+<p class="total">전체 <b>{{ total }}</b>건</p>
+
+{% if rows %}
+<div class="tbl-wrap">
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>번호</th><th>성함</th><th>연락처</th><th>유형</th><th>상태</th><th>접수일시</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rows %}
+      <tr onclick="location.href='{{ url_for('admin_detail', inquiry_id=r.id) }}'">
+        <td data-th="번호">{{ r.id }}</td>
+        <td data-th="성함"><a href="{{ url_for('admin_detail', inquiry_id=r.id) }}">{{ r.name }}</a></td>
+        <td data-th="연락처">{{ r.phone }}</td>
+        <td data-th="유형">{{ r.inquiry_type or '-' }}</td>
+        <td data-th="상태"><span class="st st-{{ st_class[r.status] }}">{{ r.status }}</span></td>
+        <td data-th="접수일시">{{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if pages > 1 %}
+<nav class="pager">
+  {% if page > 1 %}
+    <a href="{{ url_for('admin_list', page=page-1, status=status, type=itype, q=q) }}">‹ 이전</a>
+  {% endif %}
+  {% for p in range(1, pages + 1) %}
+    {% if p == page %}
+      <span class="cur">{{ p }}</span>
+    {% elif p <= 2 or p > pages - 2 or (p - page)|abs <= 2 %}
+      <a href="{{ url_for('admin_list', page=p, status=status, type=itype, q=q) }}">{{ p }}</a>
+    {% elif (p - page)|abs == 3 %}
+      <span class="dots">…</span>
+    {% endif %}
+  {% endfor %}
+  {% if page < pages %}
+    <a href="{{ url_for('admin_list', page=page+1, status=status, type=itype, q=q) }}">다음 ›</a>
+  {% endif %}
+</nav>
+{% endif %}
+
+{% else %}
+<div class="empty">조건에 맞는 문의가 없습니다.</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>{% block title %}세인약품 어드민{% endblock %}</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/symbol.png') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+<div class="layout">
+  <aside class="sb">
+    <a class="sb-logo" href="{{ url_for('admin_list') }}">
+      <img src="{{ url_for('static', filename='img/logo-white.png') }}" alt="(주) 세인약품">
+      <small>ADMIN</small>
+    </a>
+    <nav class="sb-nav">
+      <a href="{{ url_for('admin_list') }}" class="{% if request.endpoint in ('admin_list', 'admin_detail') %}on{% endif %}">
+        문의 목록
+        {% if new_count %}<span class="badge-new">{{ new_count }}</span>{% endif %}
+      </a>
+      <a href="{{ url_for('index') }}" target="_blank" rel="noopener">홈페이지 보기 ↗</a>
+    </nav>
+    <div class="sb-foot">
+      <span class="who">{{ session.get('admin_username') }}</span>
+      <a class="logout" href="{{ url_for('admin_logout') }}">로그아웃</a>
+    </div>
+  </aside>
+  <main class="main">
+    {% with msgs = get_flashed_messages(with_categories=true) %}
+      {% for cat, m in msgs %}
+        <div class="flash {{ cat }}">{{ m }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+</body>
+</html>

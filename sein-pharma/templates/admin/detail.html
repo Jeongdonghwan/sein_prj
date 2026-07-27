@@ -1,0 +1,59 @@
+{% extends "admin/base.html" %}
+{% block title %}문의 #{{ iq.id }} | 세인약품 어드민{% endblock %}
+{% block content %}
+{% set st_class = {'신규': 'new', '상담중': 'ing', '완료': 'done'} %}
+
+<div class="page-head">
+  <h1>문의 상세 <span class="muted">#{{ iq.id }}</span></h1>
+  <a class="btn-line" href="{{ url_for('admin_list') }}">← 목록으로</a>
+</div>
+
+<div class="panel">
+  <div class="info-grid">
+    <div class="info"><label>성함</label><p>{{ iq.name }}</p></div>
+    <div class="info"><label>연락처</label><p><a class="tel" href="tel:{{ iq.phone }}">{{ iq.phone }}</a></p></div>
+    <div class="info"><label>문의유형</label><p>{{ iq.inquiry_type or '-' }}</p></div>
+    <div class="info"><label>현재 상태</label><p><span class="st st-{{ st_class[iq.status] }}">{{ iq.status }}</span></p></div>
+    <div class="info"><label>접수일시</label><p>{{ iq.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p></div>
+    <div class="info"><label>수정일시</label><p>{{ iq.updated_at.strftime('%Y-%m-%d %H:%M:%S') if iq.updated_at else '-' }}</p></div>
+    <div class="info"><label>IP</label><p>{{ iq.ip_address or '-' }}</p></div>
+  </div>
+
+  <div class="msg-box">
+    <label>문의내용</label>
+    <pre>{{ iq.message or '(내용 없음)' }}</pre>
+  </div>
+</div>
+
+<div class="panel-row">
+  <div class="panel">
+    <h2>상태 변경</h2>
+    <form method="post" action="{{ url_for('admin_status', inquiry_id=iq.id) }}" class="inline-form">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <select name="status">
+        {% for s in STATUSES %}
+          <option value="{{ s }}" {% if iq.status == s %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn-gold">변경</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>관리자 메모</h2>
+    <form method="post" action="{{ url_for('admin_memo', inquiry_id=iq.id) }}">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <textarea name="admin_memo" rows="5" placeholder="상담 내용, 특이사항 등을 기록하세요.">{{ iq.admin_memo or '' }}</textarea>
+      <button type="submit" class="btn-gold">메모 저장</button>
+    </form>
+  </div>
+</div>
+
+<div class="danger-zone">
+  <form method="post" action="{{ url_for('admin_delete', inquiry_id=iq.id) }}"
+        onsubmit="return confirm('문의 #{{ iq.id }} 을(를) 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.');">
+    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <button type="submit" class="btn-danger">이 문의 삭제</button>
+  </form>
+</div>
+{% endblock %}

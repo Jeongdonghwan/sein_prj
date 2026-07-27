@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>세인약품 | CSO 전문기업 · 제약영업 · 개원컨설팅 · 병원마케팅</title>
+<meta name="description" content="세인약품은 전국 의료기관과 제약사를 잇는 CSO 전문기업입니다. 전문 영업조직 보유, 실시간 1:1 상담.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="세인약품">
+<meta property="og:title" content="세인약품 | CSO 전문기업 · 제약영업 · 개원컨설팅 · 병원마케팅">
+<meta property="og:description" content="전국 의료기관과 제약사를 잇는 CSO 전문기업. 전문 영업조직 보유, 실시간 1:1 상담.">
+<meta property="og:image" content="{{ url_for('static', filename='img/og.jpg', _external=True) }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="{{ request.url_root }}">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/symbol.png') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --gold:#D6B45A;
+  --gold-d:#C9A227;
+  --navy:#12365E;
+  --dark:#111111;
+  --dark-2:#1A1A1A;
+  --dark-3:#242424;
+  --gray:#8A8A8A;
+  --gray-l:#B5B5B5;
+  --line:#E5E5E5;
+  --line-d:#333;
+  --blue:#2F6BE0;
+  --kakao:#FEE500;
+  --blog:#2CBF62;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;
+  --wrap:1200px;
+  --gut:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:#fff;color:#111;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+
+/* ===== 공통 섹션 헤더 ===== */
+.sec{padding:clamp(70px,9vw,110px) 0}
+.sec-head{text-align:center;margin-bottom:clamp(40px,5vw,60px)}
+.sec-head h2{font-size:clamp(26px,4.2vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.35}
+.sec-head .bar{width:60px;height:2px;background:var(--gold);margin:22px auto 0}
+.sec-head p{margin-top:20px;color:var(--gray);font-size:15.5px;line-height:1.75}
+.on-dark h2{color:#fff}
+.on-dark p{color:var(--gray)}
+
+/* ===== HEADER ===== */
+.hd{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .3s,box-shadow .3s}
+.hd.solid{background:#fff;box-shadow:0 1px 0 var(--line)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;height:96px}
+.logo{display:flex;align-items:center}
+.logo img{height:46px;width:auto;display:block}
+.logo .li-dark{display:none}
+.hd.solid .li-light{display:none}
+.hd.solid .li-dark{display:block}
+
+.gnb{display:flex;align-items:center;gap:52px}
+.gnb a{font-size:16px;font-weight:600;color:#fff;transition:color .2s}
+.hd.solid .gnb a{color:#333}
+.gnb a:hover{color:var(--gold-d)}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:#fff;margin:5px auto;transition:.25s}
+.hd.solid .burger span{background:#222}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  overflow:hidden;color:#fff;
+}
+.hero-bg{position:absolute;inset:0;background:#0E1720}
+.hero-bg video,.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(8,14,20,.72),rgba(8,14,20,.55) 45%,rgba(8,14,20,.82)),
+    radial-gradient(80% 60% at 30% 55%,rgba(255,255,255,.04),transparent 70%);
+}
+.hero .wrap{position:relative;z-index:3;width:100%;padding-top:96px;padding-bottom:60px}
+.hero h1{
+  font-size:clamp(48px,9.2vw,104px);font-weight:800;line-height:1.02;letter-spacing:-.035em;
+  text-shadow:0 4px 30px rgba(0,0,0,.35);
+}
+.hero .bar{width:100px;height:4px;background:var(--gold);margin:34px 0 30px}
+.hero .l1{font-size:clamp(16px,2vw,20px);font-weight:600;margin-bottom:10px}
+.hero .l2{font-size:clamp(16px,2vw,20px);font-weight:500;color:rgba(255,255,255,.9)}
+.hero .cta{
+  display:inline-block;margin-top:38px;padding:17px 54px;border-radius:999px;
+  background:var(--gold);color:#2B2205;font-size:16px;font-weight:700;transition:.2s;
+}
+.hero .cta:hover{background:#E2C271;transform:translateY(-2px);box-shadow:0 10px 26px rgba(214,180,90,.3)}
+.scroll-hint{
+  position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;
+  font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.55);
+}
+.scroll-hint::after{content:"";display:block;width:1px;height:26px;background:rgba(255,255,255,.4);margin:8px auto 0;animation:sc 1.8s ease-in-out infinite}
+@keyframes sc{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ===== 사업부 (화이트) ===== */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.card{
+  background:#fff;border:1px solid #ECECEC;border-radius:14px;overflow:hidden;
+  box-shadow:0 2px 14px rgba(0,0,0,.05);transition:.28s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,.11)}
+.card .thumb{
+  height:232px;position:relative;overflow:hidden;background:#E9EDF1;
+}
+.card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.card:hover .thumb img{transform:scale(1.045)}
+.card .body{padding:26px 26px 32px}
+.card h3{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.card p{font-size:14.5px;color:#6B6B6B;line-height:1.78}
+
+/* ===== 혜택 (다크) ===== */
+.benefit{background:var(--dark)}
+.benefit .sec-head h2 em{font-style:normal;color:var(--gold-d)}
+.benefit .sec-head h2 b{color:var(--blue)}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.dcard{background:var(--dark-2);border:1px solid var(--line-d);border-radius:12px;overflow:hidden;transition:.28s}
+.dcard:hover{transform:translateY(-6px);border-color:#4A4127}
+.dcard .thumb{
+  height:250px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#26313C,#161D24 60%,#0E1319);
+}
+.dcard .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .45s}
+.dcard:hover .thumb img{transform:scale(1.045)}
+.dcard .thumb::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background-image:linear-gradient(180deg,rgba(10,14,19,.12),rgba(10,14,19,.62)),
+                   linear-gradient(rgba(214,180,90,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(214,180,90,.07) 1px,transparent 1px);
+  background-size:auto,30px 30px,30px 30px;
+}
+.dcard .badge{
+  position:absolute;top:16px;right:16px;z-index:2;
+  background:var(--gold);color:#241C04;font-size:12px;font-weight:800;
+  padding:5px 13px;border-radius:5px;
+}
+.dcard .body{padding:28px 26px 26px}
+.dcard h3{font-size:20px;font-weight:800;color:#fff;line-height:1.45;letter-spacing:-.02em;margin-bottom:16px}
+.dcard p{font-size:14.5px;color:var(--gray-l);line-height:1.8;min-height:78px}
+.dcard .obtn{
+  display:block;text-align:center;margin-top:22px;padding:14px;border-radius:6px;
+  border:1px solid var(--gold);color:var(--gold);font-size:14.5px;font-weight:700;transition:.2s;
+}
+.dcard .obtn:hover{background:var(--gold);color:#241C04}
+
+/* ===== 상담문의 (다크) ===== */
+.inquiry{background:var(--dark)}
+.form{max-width:900px;margin:0 auto}
+.form .fi{margin-bottom:16px}
+.form input,.form select,.form textarea{
+  width:100%;padding:19px 22px;border-radius:8px;border:1px solid #3A3A3A;
+  background:var(--dark-2);color:#fff;font-size:15px;transition:.2s;
+}
+.form textarea{min-height:170px;resize:vertical}
+.form ::placeholder{color:#6E6E6E}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--gold);background:#1F1F1F}
+.form select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8A8A8A 50%),linear-gradient(135deg,#8A8A8A 50%,transparent 50%);background-position:calc(100% - 24px) 50%,calc(100% - 17px) 50%;background-size:7px 7px;background-repeat:no-repeat}
+.form .sbtn{
+  width:100%;margin-top:14px;padding:23px;border:0;border-radius:8px;cursor:pointer;
+  background:var(--gold);color:#241C04;font-size:17px;font-weight:800;transition:.2s;
+}
+.form .sbtn:hover{background:#E2C271}
+.form .done{display:none;margin-top:16px;text-align:center;color:var(--gold);font-weight:700}
+.form .done.show{display:block}
+
+/* ===== 오시는길 (화이트) ===== */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.map{
+  height:560px;border-radius:6px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(#EFEFE9,#E4E6DF);position:relative;
+}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.visit-info h2{font-size:clamp(32px,4.6vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin-bottom:36px}
+.vrow{display:grid;grid-template-columns:34px 1fr;gap:14px;margin-bottom:26px}
+.vicon{
+  width:30px;height:30px;border-radius:50%;background:rgba(214,180,90,.15);
+  display:flex;align-items:center;justify-content:center;color:var(--gold-d);
+}
+.vicon svg{width:14px;height:14px;fill:currentColor}
+.vrow h4{font-size:17px;font-weight:800;margin-bottom:5px}
+.vrow p{font-size:14.5px;color:#6B6B6B}
+.vbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.vbtn{padding:19px 34px;border-radius:6px;background:#111;color:#fff;font-size:15px;font-weight:700;transition:.2s}
+.vbtn:hover{background:#333}
+
+/* ===== FOOTER ===== */
+.ft{background:#0A0A0A;color:#7A7A7A;padding:44px 0;font-size:13px;text-align:center;line-height:2}
+.ft .ft-logo{height:30px;width:auto;margin:0 auto 16px;opacity:.92}
+.ft .name{color:#fff;font-weight:700;font-size:15px;letter-spacing:.02em;margin-bottom:8px}
+
+/* ===== 플로팅 우측 ===== */
+.float{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:300;
+  display:flex;flex-direction:column;gap:6px}
+.float a{
+  width:108px;padding:16px 6px;border-radius:8px;text-align:center;
+  font-size:12.5px;font-weight:700;line-height:1.35;transition:.2s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+.float a .ic{display:block;margin-bottom:6px;line-height:1}
+.float a .ic svg{width:20px;height:20px;fill:currentColor;vertical-align:middle}
+.float a:hover{transform:translateX(-3px)}
+.f1{background:var(--kakao);color:#191600}
+.f2{background:#111;color:var(--gold);border:1px solid var(--gold)}
+.f3{background:#111;color:var(--gold);border:1px solid var(--gold)}
+.f4{background:var(--blog);color:#fff}
+
+/* ===== 반응형 ===== */
+@media (max-width:1000px){
+  .cards,.dcards{grid-template-columns:1fr}
+  .dcard p{min-height:0}
+  .visit-grid{grid-template-columns:1fr;gap:40px}
+  .map{height:340px}
+  .float{top:auto;bottom:12px;right:12px;transform:none;flex-direction:row}
+  .float a{width:auto;padding:12px 14px;font-size:11.5px}
+  .float a .ic{margin-bottom:3px}
+  .float a .ic svg{width:16px;height:16px}
+}
+@media (max-width:760px){
+  .hd .wrap{height:74px}
+  .logo img{height:34px}
+  .gnb{
+    position:fixed;inset:74px 0 auto 0;background:#fff;flex-direction:column;
+    align-items:stretch;gap:0;padding:6px 20px 18px;display:none;box-shadow:0 12px 24px rgba(0,0,0,.1);
+  }
+  .gnb.open{display:flex}
+  .gnb a{padding:16px 0;border-bottom:1px solid var(--line);color:#222 !important}
+  .burger{display:block}
+  .hero .wrap{padding-top:74px}
+  .form input,.form textarea{padding:16px 18px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+
+<!-- ========= HEADER ========= -->
+<header class="hd" id="hd">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <img class="li-light" src="{{ url_for('static', filename='img/logo-white.png') }}" alt="(주) 세인약품">
+      <img class="li-dark" src="{{ url_for('static', filename='img/logo.png') }}" alt="(주) 세인약품">
+    </a>
+    <nav class="gnb" id="gnb">
+      <a href="#about">회사소개</a>
+      <a href="#biz">사업부소개</a>
+      <a href="#service">주요서비스</a>
+      <a href="#visit">문의/오시는길</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ========= HERO ========= -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="">
+  </div>
+  <div class="wrap">
+    <h1>SEIN<br>PHARMA</h1>
+    <div class="bar"></div>
+    <p class="l1">전문 영업조직 보유 ㅣ 실시간 1:1 상담</p>
+    <p class="l2">전국 의료기관과 제약사를 잇는 CSO 전문기업</p>
+    <a href="#inquiry" class="cta">상담문의</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ========= 사업부 ========= -->
+<section class="sec" id="biz">
+  <div class="wrap">
+    <div class="sec-head" id="about">
+      <h2>세인약품만의 특화된 사업부</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-cso.jpg') }}" alt="의약품" loading="lazy"></div>
+        <div class="body">
+          <h3>CSO 사업부</h3>
+          <p>다수 제약사와 계약을 맺고 만 단위 품목을 취급합니다. 의원급·세미급부터 종합병원까지 거래하며, 내과·이비인후과·안과 등 모든 진료과에 맞는 제품을 판매하실 수 있도록 지원합니다.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-consult.jpg') }}" alt="개원 컨설팅 계약" loading="lazy"></div>
+        <div class="body">
+          <h3>개원컨설팅 사업부</h3>
+          <p>개원 컨설팅(부동산·인테리어·의료장비·개원홍보·금융)과 병원경영시스템(노무·세무·법률자문 파트너사 중계)까지 개원 전 과정의 업무를 지원합니다.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-marketing.jpg') }}" alt="마케팅 분석" loading="lazy"></div>
+        <div class="body">
+          <h3>병원마케팅 사업부</h3>
+          <p>병·의원에 특화된 마케팅만 진행합니다. 홈페이지·블로그·네이버 플레이스를 하나로 묶어 환자가 원하는, 환자가 찾아오는 토탈 마케팅을 제공합니다.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 혜택 ========= -->
+<section class="sec benefit on-dark" id="service">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><em>세인약품</em> 과 함께라면 누릴 수 있는 <b>최고의</b> 혜택</h2>
+      <div class="bar"></div>
+      <p>CSO 전문법인 주식회사 세인약품</p>
+    </div>
+    <div class="dcards">
+      <article class="dcard">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-system.jpg') }}" alt="" loading="lazy"><span class="badge">안전한</span></div>
+        <div class="body">
+          <h3>안전한 CSO전문법인의<br>체계적인 시스템</h3>
+          <p>제약 CSO 업계에서 10여 년 이상의 오랜 경험을 보유한 CSO 전문 법인으로, 1:1 전문인력을 통해 안정적이고 빠른 서비스를 제공합니다.</p>
+          <a href="#inquiry" class="obtn">상담하기 →</a>
+        </div>
+      </article>
+      <article class="dcard">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-support.jpg') }}" alt="" loading="lazy"><span class="badge">다양한</span></div>
+        <div class="body">
+          <h3>다양한 거래지원은 물론<br>실시간 빠른 상담처리까지</h3>
+          <p>로컬부터 세미급, 종병까지 원내 및 원외거래를 지원합니다. 카카오톡을 통한 빠른 상담 및 처리가 가능합니다.</p>
+          <a href="#inquiry" class="obtn">문의하기 →</a>
+        </div>
+      </article>
+      <article class="dcard">
+        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-data.jpg') }}" alt="" loading="lazy"><span class="badge">투명한</span></div>
+        <div class="body">
+          <h3>정확하고 투명한<br>실시간 전산시스템 활용</h3>
+          <p>투명한 전산시스템을 통해 각 제품별 정산 금액 및 수수료가 정확한지 실시간으로 직접 확인이 가능합니다.</p>
+          <a href="#inquiry" class="obtn">문의하기 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 상담문의 ========= -->
+<section class="sec inquiry on-dark" id="inquiry">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>상담문의</h2>
+      <div class="bar"></div>
+      <p>궁금한 사항을 남겨주시면 빠르게 연락드리겠습니다.<br>상담신청 시 개인정보 수집 및 이용에 자동 동의됩니다.</p>
+    </div>
+    <form class="form" id="frm" novalidate>
+      <div class="fi"><input id="f-name" type="text" placeholder="성함" required></div>
+      <div class="fi"><input id="f-tel" type="tel" placeholder="연락처" required></div>
+      <div class="fi">
+        <select id="f-type">
+          <option value="">문의 유형을 선택해주세요</option>
+          <option>CSO 품목 거래</option>
+          <option>개원컨설팅</option>
+          <option>병원마케팅</option>
+          <option>영업 파트너 지원</option>
+          <option>기타 문의</option>
+        </select>
+      </div>
+      <div class="fi"><textarea id="f-msg" placeholder="문의내용을 입력해주세요."></textarea></div>
+      <!-- 허니팟(스팸봇 차단용) : 사람에게는 보이지 않음 -->
+      <div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true">
+        <input id="f-website" type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="sbtn">상담 신청하기</button>
+      <p class="done" id="done">상담 신청이 접수되었습니다. 담당자가 빠르게 연락드리겠습니다.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ========= 오시는길 ========= -->
+<section class="sec" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="map">
+        <iframe
+          src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%ED%9A%A8%EC%9A%B0%EB%A1%9C+136&t=m&z=16&hl=ko&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen title="세인약품 위치 (광주광역시 남구 효우로 136)"></iframe>
+      </div>
+      <div class="visit-info">
+        <h2>SEIN<br>PHARMA</h2>
+        <div class="vrow">
+          <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.9 2 4.5 5.4 4.5 9.5c0 5.6 6.7 11.9 7 12.2.3.3.8.3 1.1 0 .3-.3 6.9-6.6 6.9-12.2C19.5 5.4 16.1 2 12 2zm0 10.3c-1.6 0-2.8-1.3-2.8-2.8S10.4 6.7 12 6.7s2.8 1.3 2.8 2.8-1.2 2.8-2.8 2.8z"/></svg></div>
+          <div><h4>회사위치</h4><p>광주광역시 남구 효우로 136, 3층(노대동)</p></div>
+        </div>
+        <div class="vrow">
+          <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.2 13.2c-.2.4-.7.5-1 .3l-3.7-2.1c-.3-.2-.5-.5-.5-.9V6.8c0-.4.3-.8.8-.8s.8.3.8.8v5.2l3.4 2c.3.2.4.7.2 1.2z"/></svg></div>
+          <div><h4>영업시간</h4><p>평일 09:00 - 18:00</p></div>
+        </div>
+        <div class="vrow">
+          <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
+          <div><h4>문의</h4><p>예약 및 상담: 062-674-5167 ㅣ FAX: 062-674-5168</p></div>
+        </div>
+        <div class="vbtns">
+          <a class="vbtn" href="https://map.kakao.com/link/search/광주광역시 남구 효우로 136" target="_blank" rel="noopener">카카오맵 길찾기</a>
+          <a class="vbtn" href="tel:0626745167">문의전화 하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer class="ft">
+  <div class="wrap">
+    <img class="ft-logo" src="{{ url_for('static', filename='img/logo-white.png') }}" alt="(주) 세인약품">
+    <div class="name">주식회사 세인약품</div>
+    대표 김동명 ㅣ 사업자등록번호 269-87-03193<br>
+    광주광역시 남구 효우로 136, 3층(노대동)<br>
+    TEL 062-674-5167 ㅣ FAX 062-674-5168 ㅣ E-mail <a href="mailto:seinmedicine@daum.net">seinmedicine@daum.net</a><br>
+    © 2026 ALL RIGHTS RESERVED 세인약품.
+  </div>
+</footer>
+
+<!-- ========= 플로팅 ========= -->
+<div class="float">
+  <a class="f1" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.5 2 10.8c0 2.7 1.8 5.1 4.5 6.5-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.7.1 1.4.2 2.2.2 5.5 0 10-3.5 10-7.6S17.5 3 12 3z"/></svg></span>카톡상담</a>
+  <a class="f2" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4H5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h1v3.2c0 .4.5.6.8.4l4.4-3.6H15a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/><path d="M19 8v5a4 4 0 0 1-4 4h-2.6l-.9.8h4.9l3.3 2.7c.3.3.8 0 .8-.4V18a3 3 0 0 0 1.5-2.6V11a3 3 0 0 0-3-3z" opacity=".55"/></svg></span>오픈채팅</a>
+  <a class="f3" href="tel:0626745167"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>대표번호<br>062-674-5167</a>
+  <a class="f4" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.2V21h3.8L17.9 9.9l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4c-.4-.4-1-.4-1.4 0l-1.9 1.9 3.8 3.8 1.9-1.9z"/></svg></span>블로그</a>
+</div>
+
+<script>
+var hd=document.getElementById('hd');
+function onScroll(){hd.classList.toggle('solid',window.scrollY>60);}
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+var burger=document.getElementById('burger'),gnb=document.getElementById('gnb');
+burger.addEventListener('click',function(){
+  var open=gnb.classList.toggle('open');
+  burger.setAttribute('aria-expanded',open);
+  if(open){hd.classList.add('solid');}else{onScroll();}
+});
+gnb.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){gnb.classList.remove('open');burger.setAttribute('aria-expanded','false');});
+});
+
+document.getElementById('frm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=document.getElementById('f-name').value.trim();
+  var t=document.getElementById('f-tel').value.trim();
+  if(!n||!t){alert('성함과 연락처를 입력해주세요.');return;}
+  var btn=e.target.querySelector('.sbtn');
+  btn.disabled=true;
+  fetch('/api/inquiry',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      name:n,
+      phone:t,
+      inquiry_type:document.getElementById('f-type').value,
+      message:document.getElementById('f-msg').value.trim(),
+      website:document.getElementById('f-website').value
+    })
+  })
+  .then(function(res){
+    return res.json().catch(function(){return {};}).then(function(d){return {status:res.status,data:d};});
+  })
+  .then(function(r){
+    if(r.status===200&&r.data.ok){
+      document.getElementById('done').classList.add('show');
+      e.target.reset();
+    }else if(r.status===429){
+      alert('요청이 너무 많습니다. 잠시 후 다시 시도해주세요.');
+    }else{
+      alert((r.data&&r.data.error)||'접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+  })
+  .catch(function(){alert('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');})
+  .finally(function(){btn.disabled=false;});
+});
+</script>
+</body>
+</html>

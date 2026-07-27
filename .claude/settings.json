@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Sleep 3; $html = \\(Invoke-WebRequest -Uri \"http://127.0.0.1:5001/\" -UseBasicParsing\\).Content; $html -split \"`n\" | Select-String -Pattern \"og:|twitter:\" | ForEach-Object { $_.Line.Trim\\(\\) }; \\(Invoke-WebRequest -Uri \"http://127.0.0.1:5001/static/img/og.jpg\" -UseBasicParsing\\).StatusCode)"
+    ]
+  }
+}
