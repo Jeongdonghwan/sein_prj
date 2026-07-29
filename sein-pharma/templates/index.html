@@ -104,55 +104,51 @@ button,input,select,textarea{font:inherit}
 .scroll-hint::after{content:"";display:block;width:1px;height:26px;background:rgba(255,255,255,.4);margin:8px auto 0;animation:sc 1.8s ease-in-out infinite}
 @keyframes sc{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
-/* ===== 사업부 (화이트) ===== */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.card{
-  background:#fff;border:1px solid #ECECEC;border-radius:14px;overflow:hidden;
-  box-shadow:0 2px 14px rgba(0,0,0,.05);transition:.28s;
+/* ===== CSO 소개 (화이트) ===== */
+.icards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.icard{
+  background:#F8F7F4;border:1px solid #EFEDE7;border-radius:16px;
+  padding:44px 30px 40px;text-align:center;transition:.28s;
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,.11)}
-.card .thumb{
-  height:232px;position:relative;overflow:hidden;background:#E9EDF1;
+.icard:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,.08);background:#fff}
+.icard .ico{
+  width:72px;height:72px;margin:0 auto 24px;border-radius:50%;
+  background:rgba(214,180,90,.14);display:flex;align-items:center;justify-content:center;
+  color:var(--gold-d);
 }
-.card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
-.card:hover .thumb img{transform:scale(1.045)}
-.card .body{padding:26px 26px 32px}
-.card h3{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
-.card p{font-size:14.5px;color:#6B6B6B;line-height:1.78}
+.icard .ico svg{width:32px;height:32px;fill:currentColor}
+.icard h3{font-size:21px;font-weight:800;letter-spacing:-.01em;color:var(--gold-d);margin-bottom:16px}
+.icard p{font-size:14.5px;color:#6B6B6B;line-height:1.85}
 
-/* ===== 혜택 (다크) ===== */
-.benefit{background:var(--dark)}
-.benefit .sec-head h2 em{font-style:normal;color:var(--gold-d)}
-.benefit .sec-head h2 b{color:var(--blue)}
-.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.dcard{background:var(--dark-2);border:1px solid var(--line-d);border-radius:12px;overflow:hidden;transition:.28s}
-.dcard:hover{transform:translateY(-6px);border-color:#4A4127}
-.dcard .thumb{
-  height:250px;position:relative;overflow:hidden;
-  background:linear-gradient(150deg,#26313C,#161D24 60%,#0E1319);
+/* ===== 주요서비스 (다크) ===== */
+.svc{background:var(--dark)}
+.svc .sec-head h2 em{font-style:normal;color:var(--gold-d)}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px 56px;max-width:1050px;margin:0 auto}
+.svc-item:nth-child(even){margin-top:70px}
+.svc-item .ph{position:relative;height:290px;overflow:hidden;border-radius:6px}
+.svc-item .ph img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .45s}
+.svc-item:hover .ph img{transform:scale(1.045)}
+.svc-item .ph::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,14,19,.05) 30%,rgba(10,14,19,.8));
 }
-.dcard .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .45s}
-.dcard:hover .thumb img{transform:scale(1.045)}
-.dcard .thumb::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background-image:linear-gradient(180deg,rgba(10,14,19,.12),rgba(10,14,19,.62)),
-                   linear-gradient(rgba(214,180,90,.07) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(214,180,90,.07) 1px,transparent 1px);
-  background-size:auto,30px 30px,30px 30px;
+.svc-item .num{
+  position:absolute;right:14px;bottom:2px;z-index:2;
+  font-size:104px;font-weight:800;line-height:1;color:rgba(255,255,255,.16);
+  letter-spacing:-.04em;
 }
-.dcard .badge{
-  position:absolute;top:16px;right:16px;z-index:2;
-  background:var(--gold);color:#241C04;font-size:12px;font-weight:800;
-  padding:5px 13px;border-radius:5px;
+.svc-item .cap{position:absolute;left:24px;bottom:22px;z-index:2}
+.svc-item .cap small{display:block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold);margin-bottom:7px}
+.svc-item .cap strong{font-size:27px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.svc-item .body{padding:24px 6px 0}
+.svc-item .body ul{list-style:none}
+.svc-item .body li{
+  position:relative;padding-left:17px;
+  font-size:14.5px;color:var(--gray-l);line-height:2.1;
 }
-.dcard .body{padding:28px 26px 26px}
-.dcard h3{font-size:20px;font-weight:800;color:#fff;line-height:1.45;letter-spacing:-.02em;margin-bottom:16px}
-.dcard p{font-size:14.5px;color:var(--gray-l);line-height:1.8;min-height:78px}
-.dcard .obtn{
-  display:block;text-align:center;margin-top:22px;padding:14px;border-radius:6px;
-  border:1px solid var(--gold);color:var(--gold);font-size:14.5px;font-weight:700;transition:.2s;
+.svc-item .body li::before{
+  content:"";position:absolute;left:0;top:15px;width:7px;height:2px;background:var(--gold);
 }
-.dcard .obtn:hover{background:var(--gold);color:#241C04}
 
 /* ===== 상담문의 (다크) ===== */
 .inquiry{background:var(--dark)}
@@ -217,12 +213,13 @@ button,input,select,textarea{font:inherit}
 
 /* ===== 반응형 ===== */
 @media (max-width:1000px){
-  .cards,.dcards{grid-template-columns:1fr}
-  .dcard p{min-height:0}
+  .icards{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr;gap:48px}
+  .svc-item:nth-child(even){margin-top:0}
   .visit-grid{grid-template-columns:1fr;gap:40px}
   .map{height:340px}
-  .float{top:auto;bottom:12px;right:12px;transform:none;flex-direction:row}
-  .float a{width:auto;padding:12px 14px;font-size:11.5px}
+  .float{top:auto;bottom:12px;left:12px;right:12px;transform:none;flex-direction:row}
+  .float a{flex:1;width:auto;min-width:0;padding:11px 4px;font-size:11.5px}
   .float a .ic{margin-bottom:3px}
   .float a .ic svg{width:16px;height:16px}
 }
@@ -252,10 +249,10 @@ button,input,select,textarea{font:inherit}
       <img class="li-dark" src="{{ url_for('static', filename='img/logo.png') }}" alt="(주) 세인약품">
     </a>
     <nav class="gnb" id="gnb">
-      <a href="#about">회사소개</a>
-      <a href="#biz">사업부소개</a>
+      <a href="#about">CSO소개</a>
       <a href="#service">주요서비스</a>
-      <a href="#visit">문의/오시는길</a>
+      <a href="#inquiry">상담문의</a>
+      <a href="#visit">오시는길</a>
     </nav>
     <button class="burger" id="burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -267,7 +264,7 @@ button,input,select,textarea{font:inherit}
     <img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="">
   </div>
   <div class="wrap">
-    <h1>SEIN<br>PHARMA</h1>
+    <h1>SEIN<br>PHARM</h1>
     <div class="bar"></div>
     <p class="l1">전문 영업조직 보유 ㅣ 실시간 1:1 상담</p>
     <p class="l2">전국 의료기관과 제약사를 잇는 CSO 전문기업</p>
@@ -276,70 +273,101 @@ button,input,select,textarea{font:inherit}
   <div class="scroll-hint">SCROLL</div>
 </section>
 
-<!-- ========= 사업부 ========= -->
-<section class="sec" id="biz">
+<!-- ========= CSO 소개 ========= -->
+<section class="sec" id="about">
   <div class="wrap">
-    <div class="sec-head" id="about">
-      <h2>세인약품만의 특화된 사업부</h2>
+    <div class="sec-head">
+      <h2>CSO란 무엇일까요?</h2>
       <div class="bar"></div>
+      <p>CSO(Contract Sales Organization)는 제약사의 영업·마케팅을 위탁받아 수행하는 전문 조직입니다.</p>
     </div>
-    <div class="cards">
-      <article class="card">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-cso.jpg') }}" alt="의약품" loading="lazy"></div>
-        <div class="body">
-          <h3>CSO 사업부</h3>
-          <p>다수 제약사와 계약을 맺고 만 단위 품목을 취급합니다. 의원급·세미급부터 종합병원까지 거래하며, 내과·이비인후과·안과 등 모든 진료과에 맞는 제품을 판매하실 수 있도록 지원합니다.</p>
-        </div>
+    <div class="icards">
+      <article class="icard">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3.4a15.6 15.6 0 0 0-1.3-6.1A8 8 0 0 1 19.9 11zM12 4c.9 1.2 1.9 3.6 2.1 7H9.9c.2-3.4 1.2-5.8 2.1-7zM4.1 13h3.4c.1 2.3.6 4.4 1.3 6.1A8 8 0 0 1 4.1 13zm3.4-2H4.1a8 8 0 0 1 4.7-6.1A15.6 15.6 0 0 0 7.5 11zm4.5 9c-.9-1.2-1.9-3.6-2.1-7h4.2c-.2 3.4-1.2 5.8-2.1 7zm3.2-.9a15.6 15.6 0 0 0 1.3-6.1h3.4a8 8 0 0 1-4.7 6.1z"/></svg></div>
+        <h3>SINCE 1970</h3>
+        <p>1970년대 유럽에서 시작된, 제약사와 영업 위수탁 계약을 맺고 전문성을 가지고 컨설팅하는 사업 형태입니다. 글로벌 CSO 기업들이 시장을 지속적으로 확장해 왔으며, 국내 CSO 시장도 6조 원 규모를 넘어 꾸준히 성장하고 있습니다.</p>
       </article>
-      <article class="card">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-consult.jpg') }}" alt="개원 컨설팅 계약" loading="lazy"></div>
-        <div class="body">
-          <h3>개원컨설팅 사업부</h3>
-          <p>개원 컨설팅(부동산·인테리어·의료장비·개원홍보·금융)과 병원경영시스템(노무·세무·법률자문 파트너사 중계)까지 개원 전 과정의 업무를 지원합니다.</p>
-        </div>
+      <article class="icard">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 13.7a4.6 4.6 0 0 1 0-6.5l3-3a4.6 4.6 0 0 1 6.5 6.5l-3 3a4.6 4.6 0 0 1-6.5 0zm1.4-1.4a2.6 2.6 0 0 0 3.7 0l1.1-1.1-3.7-3.7-1.1 1.1a2.6 2.6 0 0 0 0 3.7zm4.7 7.5a4.6 4.6 0 0 1 0-6.5l3-3a4.6 4.6 0 1 1 6.5 6.5l-3 3a4.6 4.6 0 0 1-6.5 0zm8.1-4.4 1.1-1.1a2.6 2.6 0 1 0-3.7-3.7l-1.1 1.1 3.7 3.7z"/></svg></div>
+        <h3>제약영업</h3>
+        <p>의사·약사 등 보건의료 전문가를 대상으로 제품 정보 전달과 처방 컨설팅을 통해 수익을 창출합니다. 제약 시장의 최신 정보와 트렌드를 빠르게 제공하고 반영시키는 중요한 역할을 담당합니다.</p>
       </article>
-      <article class="card">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/biz-marketing.jpg') }}" alt="마케팅 분석" loading="lazy"></div>
-        <div class="body">
-          <h3>병원마케팅 사업부</h3>
-          <p>병·의원에 특화된 마케팅만 진행합니다. 홈페이지·블로그·네이버 플레이스를 하나로 묶어 환자가 원하는, 환자가 찾아오는 토탈 마케팅을 제공합니다.</p>
-        </div>
+      <article class="icard">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 18.5 2 17l7-7 4 4 7.6-7.6L22 7.8l-9 9-4-4-5.5 5.7zM22 6h-6l2.3 2.3L22 4v2z"/><path d="M21 3h-5v2h3v3h2V3z"/></svg></div>
+        <h3>수익의 극대화</h3>
+        <p>시간적·공간적 제약 없이 전 제약사의 품목을 선택적으로 선정해 취급할 수 있어 초기 투자 비용이 적게 들고, 수익성 높은 치료군 분석을 통해 높은 수익을 기대할 수 있습니다.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ========= 혜택 ========= -->
-<section class="sec benefit on-dark" id="service">
+<!-- ========= 주요서비스 ========= -->
+<section class="sec svc on-dark" id="service">
   <div class="wrap">
     <div class="sec-head">
-      <h2><em>세인약품</em> 과 함께라면 누릴 수 있는 <b>최고의</b> 혜택</h2>
+      <h2><em>세인약품</em>의 주요서비스</h2>
       <div class="bar"></div>
-      <p>CSO 전문법인 주식회사 세인약품</p>
+      <p>정직한 정산부터 원내거래까지, 파트너의 성공을 위한 토탈 지원 시스템</p>
     </div>
-    <div class="dcards">
-      <article class="dcard">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-system.jpg') }}" alt="" loading="lazy"><span class="badge">안전한</span></div>
+    <div class="svc-grid">
+      <article class="svc-item">
+        <div class="ph">
+          <img src="{{ url_for('static', filename='img/svc-01.jpg') }}" alt="" loading="lazy">
+          <span class="num">01</span>
+          <div class="cap"><small>GUARANTEE OF COMMISSION</small><strong>정직한 정산</strong></div>
+        </div>
         <div class="body">
-          <h3>안전한 CSO전문법인의<br>체계적인 시스템</h3>
-          <p>제약 CSO 업계에서 10여 년 이상의 오랜 경험을 보유한 CSO 전문 법인으로, 1:1 전문인력을 통해 안정적이고 빠른 서비스를 제공합니다.</p>
-          <a href="#inquiry" class="obtn">상담하기 →</a>
+          <ul>
+            <li>업계 최고 수준의 수수료율 보장</li>
+            <li>법인 자금을 통한 안전하고 정확한 지급</li>
+            <li>투명 전산시스템으로 품목별 정산·수수료 실시간 확인</li>
+            <li>정산 전 사전 확인 절차로 오차 최소화</li>
+          </ul>
         </div>
       </article>
-      <article class="dcard">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-support.jpg') }}" alt="" loading="lazy"><span class="badge">다양한</span></div>
+      <article class="svc-item">
+        <div class="ph">
+          <img src="{{ url_for('static', filename='img/svc-02.jpg') }}" alt="" loading="lazy">
+          <span class="num">02</span>
+          <div class="cap"><small>PROFESSIONAL SOLUTIONS</small><strong>신속한 업무 지원</strong></div>
+        </div>
         <div class="body">
-          <h3>다양한 거래지원은 물론<br>실시간 빠른 상담처리까지</h3>
-          <p>로컬부터 세미급, 종병까지 원내 및 원외거래를 지원합니다. 카카오톡을 통한 빠른 상담 및 처리가 가능합니다.</p>
-          <a href="#inquiry" class="obtn">문의하기 →</a>
+          <ul>
+            <li>1:1 전담 인력의 실시간 상담 처리</li>
+            <li>제품·정책 변경사항 즉시 공지</li>
+            <li>영업에 필요한 제품 자료·브로슈어 지원</li>
+            <li>카카오톡 기반의 빠른 소통 채널 운영</li>
+          </ul>
         </div>
       </article>
-      <article class="dcard">
-        <div class="thumb"><img src="{{ url_for('static', filename='img/bnf-data.jpg') }}" alt="" loading="lazy"><span class="badge">투명한</span></div>
+      <article class="svc-item">
+        <div class="ph">
+          <img src="{{ url_for('static', filename='img/svc-03.jpg') }}" alt="" loading="lazy">
+          <span class="num">03</span>
+          <div class="cap"><small>ACCOUNTABILITY CONSULTING</small><strong>개원·경영 컨설팅</strong></div>
+        </div>
         <div class="body">
-          <h3>정확하고 투명한<br>실시간 전산시스템 활용</h3>
-          <p>투명한 전산시스템을 통해 각 제품별 정산 금액 및 수수료가 정확한지 실시간으로 직접 확인이 가능합니다.</p>
-          <a href="#inquiry" class="obtn">문의하기 →</a>
+          <ul>
+            <li>부동산·인테리어·의료장비·개원홍보·금융 지원</li>
+            <li>노무·세무·법률 자문 파트너사 중계</li>
+            <li>사업 형태와 매출 규모에 맞는 맞춤 컨설팅</li>
+            <li>병의원 운영 노하우와 의료 정보 제공</li>
+          </ul>
+        </div>
+      </article>
+      <article class="svc-item">
+        <div class="ph">
+          <img src="{{ url_for('static', filename='img/svc-04.jpg') }}" alt="" loading="lazy">
+          <span class="num">04</span>
+          <div class="cap"><small>IN-HOUSE SALES</small><strong>원내거래 지원</strong></div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>로컬부터 세미급·종합병원까지 원내/원외 거래</li>
+            <li>만 단위 취급 품목의 다양한 포트폴리오</li>
+            <li>신속한 견적과 안정적인 공급</li>
+            <li>전 진료과에 맞는 품목 매칭 지원</li>
+          </ul>
         </div>
       </article>
     </div>
@@ -389,7 +417,7 @@ button,input,select,textarea{font:inherit}
           allowfullscreen title="세인약품 위치 (광주광역시 남구 효우로 136)"></iframe>
       </div>
       <div class="visit-info">
-        <h2>SEIN<br>PHARMA</h2>
+        <h2>SEIN<br>PHARM</h2>
         <div class="vrow">
           <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.9 2 4.5 5.4 4.5 9.5c0 5.6 6.7 11.9 7 12.2.3.3.8.3 1.1 0 .3-.3 6.9-6.6 6.9-12.2C19.5 5.4 16.1 2 12 2zm0 10.3c-1.6 0-2.8-1.3-2.8-2.8S10.4 6.7 12 6.7s2.8 1.3 2.8 2.8-1.2 2.8-2.8 2.8z"/></svg></div>
           <div><h4>회사위치</h4><p>광주광역시 남구 효우로 136, 3층(노대동)</p></div>
@@ -426,8 +454,8 @@ button,input,select,textarea{font:inherit}
 <!-- ========= 플로팅 ========= -->
 <div class="float">
   <a class="f1" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.5 2 10.8c0 2.7 1.8 5.1 4.5 6.5-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.7.1 1.4.2 2.2.2 5.5 0 10-3.5 10-7.6S17.5 3 12 3z"/></svg></span>카톡상담</a>
-  <a class="f2" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4H5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h1v3.2c0 .4.5.6.8.4l4.4-3.6H15a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/><path d="M19 8v5a4 4 0 0 1-4 4h-2.6l-.9.8h4.9l3.3 2.7c.3.3.8 0 .8-.4V18a3 3 0 0 0 1.5-2.6V11a3 3 0 0 0-3-3z" opacity=".55"/></svg></span>오픈채팅</a>
-  <a class="f3" href="tel:0626745167"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>대표번호<br>062-674-5167</a>
+  <a class="f2" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span>상담문의</a>
+  <a class="f3" href="tel:0626745167"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>전화상담</a>
   <a class="f4" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.2V21h3.8L17.9 9.9l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4c-.4-.4-1-.4-1.4 0l-1.9 1.9 3.8 3.8 1.9-1.9z"/></svg></span>블로그</a>
 </div>
 
