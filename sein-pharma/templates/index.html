@@ -46,6 +46,7 @@ button,input,select,textarea{font:inherit}
 
 /* ===== 공통 섹션 헤더 ===== */
 .sec{padding:clamp(70px,9vw,110px) 0}
+.sec[id]{scroll-margin-top:96px}
 .sec-head{text-align:center;margin-bottom:clamp(40px,5vw,60px)}
 .sec-head h2{font-size:clamp(26px,4.2vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.35}
 .sec-head .bar{width:60px;height:2px;background:var(--gold);margin:22px auto 0}
@@ -104,21 +105,37 @@ button,input,select,textarea{font:inherit}
 .scroll-hint::after{content:"";display:block;width:1px;height:26px;background:rgba(255,255,255,.4);margin:8px auto 0;animation:sc 1.8s ease-in-out infinite}
 @keyframes sc{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
-/* ===== CSO 소개 (화이트) ===== */
-.icards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.icard{
-  background:#F8F7F4;border:1px solid #EFEDE7;border-radius:16px;
-  padding:44px 30px 40px;text-align:center;transition:.28s;
+/* ===== CSO 소개 (화이트 · 에디토리얼) ===== */
+.about-grid{
+  display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  gap:0 clamp(48px,7vw,96px);align-items:start;
 }
-.icard:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,.08);background:#fff}
-.icard .ico{
-  width:72px;height:72px;margin:0 auto 24px;border-radius:50%;
-  background:rgba(214,180,90,.14);display:flex;align-items:center;justify-content:center;
-  color:var(--gold-d);
+.ab-head{position:sticky;top:132px;align-self:start}
+.ab-eyebrow{
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;
+  font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold-d);
 }
-.icard .ico svg{width:32px;height:32px;fill:currentColor}
-.icard h3{font-size:21px;font-weight:800;letter-spacing:-.01em;color:var(--gold-d);margin-bottom:16px}
-.icard p{font-size:14.5px;color:#6B6B6B;line-height:1.85}
+.ab-eyebrow::before{content:"";flex:none;width:34px;height:2px;background:var(--gold)}
+.ab-head h2{
+  font-size:clamp(30px,4vw,46px);font-weight:800;
+  letter-spacing:-.035em;line-height:1.22;color:var(--dark);
+}
+.ab-head .lead{margin-top:24px;max-width:34ch;font-size:15.5px;line-height:1.8;color:#6B6B6B}
+.about-list{list-style:none;border-bottom:1px solid var(--line)}
+.ab-item{
+  display:grid;grid-template-columns:64px minmax(0,1fr);gap:0 24px;
+  padding:clamp(30px,3.4vw,40px) 0;border-top:1px solid var(--line);
+}
+.ab-txt{min-width:0}
+.ab-idx{
+  padding-top:.55em;font-size:12px;font-weight:800;letter-spacing:.14em;
+  color:var(--gold-d);font-variant-numeric:tabular-nums;
+}
+.ab-item h3{
+  margin-bottom:12px;font-size:clamp(19px,2.1vw,23px);font-weight:800;
+  letter-spacing:-.02em;line-height:1.4;color:var(--dark);
+}
+.ab-item p{font-size:15px;line-height:1.9;color:#5F5F5F;max-width:60ch}
 
 /* ===== 주요서비스 (다크) ===== */
 .svc{background:var(--dark)}
@@ -211,9 +228,30 @@ button,input,select,textarea{font:inherit}
 .f3{background:#111;color:var(--gold);border:1px solid var(--gold)}
 .f4{background:var(--blog);color:#fff}
 
+/* ===== SCROLL REVEAL =====
+   숨김은 <head>의 게이트 스크립트가 <html>에 .reveal-on 을 붙였을 때만 적용된다.
+   (JS 미실행·IO 미지원·모션최소화 시 클래스가 없어 콘텐츠는 처음부터 보인다) */
+.reveal-on .reveal,
+.reveal-on .reveal-group>*{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .66s ease,transform .66s cubic-bezier(.22,.61,.36,1);
+}
+.reveal-on .reveal-fade{transform:none}
+.reveal-on .reveal.is-visible,
+.reveal-on .reveal-group.is-visible>*{opacity:1;transform:none}
+.reveal-on .reveal-group>*:nth-child(2){transition-delay:.08s}
+.reveal-on .reveal-group>*:nth-child(3){transition-delay:.16s}
+.reveal-on .reveal-group>*:nth-child(4){transition-delay:.24s}
+.reveal-on .reveal-group>*:nth-child(5){transition-delay:.32s}
+.reveal-on .reveal-group>*:nth-child(n+6){transition-delay:.40s}
+
 /* ===== 반응형 ===== */
 @media (max-width:1000px){
-  .icards{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:minmax(0,1fr);gap:clamp(34px,5vw,46px) 0}
+  .ab-head{position:static;top:auto}
+  .ab-head .lead{max-width:none}
+  .ab-item{grid-template-columns:52px minmax(0,1fr);gap:0 18px}
+  .ab-item p{max-width:none}
   .svc-grid{grid-template-columns:1fr;gap:48px}
   .svc-item:nth-child(even){margin-top:0}
   .visit-grid{grid-template-columns:1fr;gap:40px}
@@ -235,9 +273,35 @@ button,input,select,textarea{font:inherit}
   .burger{display:block}
   .hero .wrap{padding-top:74px}
   .form input,.form textarea{padding:16px 18px}
+  .sec[id]{scroll-margin-top:74px}
+  .ab-item{grid-template-columns:minmax(0,1fr)}
+  .ab-idx{padding-top:0;margin-bottom:10px}
+  .ab-item p{font-size:14.5px;line-height:1.85}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .reveal-on .reveal,
+  .reveal-on .reveal-group>*{opacity:1 !important;transform:none !important}
+}
+@media print{
+  .reveal-on .reveal,
+  .reveal-on .reveal-group>*{opacity:1 !important;transform:none !important}
+}
 </style>
+<script>
+/* 스크롤 리빌 게이트: 되살릴 수단이 확실할 때만 숨김 상태를 켠다.
+   조건 미충족 시 .reveal-on 이 없으므로 콘텐츠는 처음부터 그냥 보인다. */
+(function(){
+  var d=document.documentElement;
+  if(!('IntersectionObserver' in window))return;
+  if(!d.classList)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  d.classList.add('reveal-on');
+  /* 최후 안전장치: 4초 안에 관찰자가 붙지 않으면 숨김을 해제 */
+  window.__revealFailsafe=window.setTimeout(function(){d.classList.remove('reveal-on');},4000);
+})();
+</script>
 </head>
 <body>
 
@@ -276,27 +340,38 @@ button,input,select,textarea{font:inherit}
 <!-- ========= CSO 소개 ========= -->
 <section class="sec" id="about">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>CSO란 무엇일까요?</h2>
-      <div class="bar"></div>
-      <p>CSO(Contract Sales Organization)는 제약사의 영업·마케팅을 위탁받아 수행하는 전문 조직입니다.</p>
-    </div>
-    <div class="icards">
-      <article class="icard">
-        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3.4a15.6 15.6 0 0 0-1.3-6.1A8 8 0 0 1 19.9 11zM12 4c.9 1.2 1.9 3.6 2.1 7H9.9c.2-3.4 1.2-5.8 2.1-7zM4.1 13h3.4c.1 2.3.6 4.4 1.3 6.1A8 8 0 0 1 4.1 13zm3.4-2H4.1a8 8 0 0 1 4.7-6.1A15.6 15.6 0 0 0 7.5 11zm4.5 9c-.9-1.2-1.9-3.6-2.1-7h4.2c-.2 3.4-1.2 5.8-2.1 7zm3.2-.9a15.6 15.6 0 0 0 1.3-6.1h3.4a8 8 0 0 1-4.7 6.1z"/></svg></div>
-        <h3>SINCE 1970</h3>
-        <p>1970년대 유럽에서 시작된, 제약사와 영업 위수탁 계약을 맺고 전문성을 가지고 컨설팅하는 사업 형태입니다. 글로벌 CSO 기업들이 시장을 지속적으로 확장해 왔으며, 국내 CSO 시장도 6조 원 규모를 넘어 꾸준히 성장하고 있습니다.</p>
-      </article>
-      <article class="icard">
-        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 13.7a4.6 4.6 0 0 1 0-6.5l3-3a4.6 4.6 0 0 1 6.5 6.5l-3 3a4.6 4.6 0 0 1-6.5 0zm1.4-1.4a2.6 2.6 0 0 0 3.7 0l1.1-1.1-3.7-3.7-1.1 1.1a2.6 2.6 0 0 0 0 3.7zm4.7 7.5a4.6 4.6 0 0 1 0-6.5l3-3a4.6 4.6 0 1 1 6.5 6.5l-3 3a4.6 4.6 0 0 1-6.5 0zm8.1-4.4 1.1-1.1a2.6 2.6 0 1 0-3.7-3.7l-1.1 1.1 3.7 3.7z"/></svg></div>
-        <h3>제약영업</h3>
-        <p>의사·약사 등 보건의료 전문가를 대상으로 제품 정보 전달과 처방 컨설팅을 통해 수익을 창출합니다. 제약 시장의 최신 정보와 트렌드를 빠르게 제공하고 반영시키는 중요한 역할을 담당합니다.</p>
-      </article>
-      <article class="icard">
-        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 18.5 2 17l7-7 4 4 7.6-7.6L22 7.8l-9 9-4-4-5.5 5.7zM22 6h-6l2.3 2.3L22 4v2z"/><path d="M21 3h-5v2h3v3h2V3z"/></svg></div>
-        <h3>수익의 극대화</h3>
-        <p>시간적·공간적 제약 없이 전 제약사의 품목을 선택적으로 선정해 취급할 수 있어 초기 투자 비용이 적게 들고, 수익성 높은 치료군 분석을 통해 높은 수익을 기대할 수 있습니다.</p>
-      </article>
+    <div class="about-grid">
+
+      <div class="ab-head reveal reveal-fade">
+        <p class="ab-eyebrow">ABOUT CSO</p>
+        <h2>CSO란<br>무엇일까요?</h2>
+        <p class="lead">CSO(Contract Sales Organization)는 제약사의 영업·마케팅을 위탁받아 수행하는 전문 조직입니다.</p>
+      </div>
+
+      <ol class="about-list reveal-group" role="list">
+        <li class="ab-item">
+          <div class="ab-idx" aria-hidden="true">01</div>
+          <div class="ab-txt">
+            <h3>SINCE 1970</h3>
+            <p>1970년대 유럽에서 시작된, 제약사와 영업 위수탁 계약을 맺고 전문성을 가지고 컨설팅하는 사업 형태입니다. 글로벌 CSO 기업들이 시장을 지속적으로 확장해 왔으며, 국내 CSO 시장도 6조 원 규모를 넘어 꾸준히 성장하고 있습니다.</p>
+          </div>
+        </li>
+        <li class="ab-item">
+          <div class="ab-idx" aria-hidden="true">02</div>
+          <div class="ab-txt">
+            <h3>제약영업</h3>
+            <p>의사·약사 등 보건의료 전문가를 대상으로 제품 정보 전달과 처방 컨설팅을 통해 수익을 창출합니다. 제약 시장의 최신 정보와 트렌드를 빠르게 제공하고 반영시키는 중요한 역할을 담당합니다.</p>
+          </div>
+        </li>
+        <li class="ab-item">
+          <div class="ab-idx" aria-hidden="true">03</div>
+          <div class="ab-txt">
+            <h3>수익의 극대화</h3>
+            <p>시간적·공간적 제약 없이 전 제약사의 품목을 선택적으로 선정해 취급할 수 있어 초기 투자 비용이 적게 들고, 수익성 높은 치료군 분석을 통해 높은 수익을 기대할 수 있습니다.</p>
+          </div>
+        </li>
+      </ol>
+
     </div>
   </div>
 </section>
@@ -304,12 +379,12 @@ button,input,select,textarea{font:inherit}
 <!-- ========= 주요서비스 ========= -->
 <section class="sec svc on-dark" id="service">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal-group">
       <h2><em>세인약품</em>의 주요서비스</h2>
       <div class="bar"></div>
       <p>정직한 정산부터 원내거래까지, 파트너의 성공을 위한 토탈 지원 시스템</p>
     </div>
-    <div class="svc-grid">
+    <div class="svc-grid reveal-group">
       <article class="svc-item">
         <div class="ph">
           <img src="{{ url_for('static', filename='img/svc-01.jpg') }}" alt="" loading="lazy">
@@ -377,12 +452,12 @@ button,input,select,textarea{font:inherit}
 <!-- ========= 상담문의 ========= -->
 <section class="sec inquiry on-dark" id="inquiry">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal-group">
       <h2>상담문의</h2>
       <div class="bar"></div>
       <p>궁금한 사항을 남겨주시면 빠르게 연락드리겠습니다.<br>상담신청 시 개인정보 수집 및 이용에 자동 동의됩니다.</p>
     </div>
-    <form class="form" id="frm" novalidate>
+    <form class="form reveal" id="frm" novalidate>
       <div class="fi"><input id="f-name" type="text" placeholder="성함" required></div>
       <div class="fi"><input id="f-tel" type="tel" placeholder="연락처" required></div>
       <div class="fi">
@@ -410,13 +485,13 @@ button,input,select,textarea{font:inherit}
 <section class="sec" id="visit">
   <div class="wrap">
     <div class="visit-grid">
-      <div class="map">
+      <div class="map reveal reveal-fade">
         <iframe
           src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%ED%9A%A8%EC%9A%B0%EB%A1%9C+136&t=m&z=16&hl=ko&output=embed"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen title="세인약품 위치 (광주광역시 남구 효우로 136)"></iframe>
       </div>
-      <div class="visit-info">
+      <div class="visit-info reveal-group">
         <h2>SEIN<br>PHARM</h2>
         <div class="vrow">
           <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.9 2 4.5 5.4 4.5 9.5c0 5.6 6.7 11.9 7 12.2.3.3.8.3 1.1 0 .3-.3 6.9-6.6 6.9-12.2C19.5 5.4 16.1 2 12 2zm0 10.3c-1.6 0-2.8-1.3-2.8-2.8S10.4 6.7 12 6.7s2.8 1.3 2.8 2.8-1.2 2.8-2.8 2.8z"/></svg></div>
@@ -458,6 +533,31 @@ button,input,select,textarea{font:inherit}
   <a class="f3" href="tel:0626745167"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>전화상담</a>
   <a class="f4" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.2V21h3.8L17.9 9.9l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4c-.4-.4-1-.4-1.4 0l-1.9 1.9 3.8 3.8 1.9-1.9z"/></svg></span>블로그</a>
 </div>
+
+<script>
+/* 스크롤 리빌 관찰자. 실패하면 숨김을 걷어내 콘텐츠를 즉시 노출한다. */
+(function(){
+  var d=document.documentElement;
+  if(!d.classList.contains('reveal-on'))return;
+  try{
+    var items=document.querySelectorAll('.reveal,.reveal-group');
+    if(!items.length){d.classList.remove('reveal-on');return;}
+    var io=new IntersectionObserver(function(entries,obs){
+      for(var i=0;i<entries.length;i++){
+        if(entries[i].isIntersecting){
+          entries[i].target.classList.add('is-visible');
+          obs.unobserve(entries[i].target);
+        }
+      }
+    },{threshold:0,rootMargin:'0px 0px -12% 0px'});
+    for(var j=0;j<items.length;j++)io.observe(items[j]);
+    window.clearTimeout(window.__revealFailsafe);
+  }catch(e){
+    d.classList.remove('reveal-on');
+    window.clearTimeout(window.__revealFailsafe);
+  }
+})();
+</script>
 
 <script>
 var hd=document.getElementById('hd');
