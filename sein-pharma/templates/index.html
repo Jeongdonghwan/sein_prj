@@ -387,21 +387,21 @@ button,input,select,textarea{font:inherit}
     <div class="sec-head reveal-group">
       <h2><em>세인약품</em>의 주요서비스</h2>
       <div class="bar"></div>
-      <p>정직한 정산부터 원내거래까지, 파트너의 성공을 위한 토탈 지원 시스템</p>
+      <p>정확한 정산부터 원내거래까지, 파트너의 성공을 위한 토탈 지원 시스템</p>
     </div>
     <div class="svc-grid reveal-group">
       <article class="svc-item">
         <div class="ph">
           <img src="{{ url_for('static', filename='img/svc-01.jpg') }}" alt="" loading="lazy">
           <span class="num">01</span>
-          <div class="cap"><small>GUARANTEE OF COMMISSION</small><strong>정직한 정산</strong></div>
+          <div class="cap"><small>GUARANTEE OF COMMISSION</small><strong>정확한 정산</strong></div>
         </div>
         <div class="body">
           <ul>
+            <li>차감없는 정산 수수료</li>
             <li>업계 최고 수준의 수수료율 보장</li>
-            <li>법인 자금을 통한 안전하고 정확한 지급</li>
-            <li>투명 전산시스템으로 품목별 정산·수수료 실시간 확인</li>
-            <li>정산 전 사전 확인 절차로 오차 최소화</li>
+            <li>빠르고 정확한 정산 서비스</li>
+            <li>전산 시스템을 통한 정확한 정산</li>
           </ul>
         </div>
       </article>
@@ -414,7 +414,7 @@ button,input,select,textarea{font:inherit}
         <div class="body">
           <ul>
             <li>1:1 전담 인력의 실시간 상담 처리</li>
-            <li>제품·정책 변경사항 즉시 공지</li>
+            <li>실시간 대응 체계로 피드백 즉각 반영</li>
             <li>영업에 필요한 제품 자료·브로슈어 지원</li>
             <li>카카오톡 기반의 빠른 소통 채널 운영</li>
           </ul>
@@ -422,8 +422,23 @@ button,input,select,textarea{font:inherit}
       </article>
       <article class="svc-item">
         <div class="ph">
-          <img src="{{ url_for('static', filename='img/svc-03.jpg') }}" alt="" loading="lazy">
+          <img src="{{ url_for('static', filename='img/svc-04.jpg') }}" alt="" loading="lazy">
           <span class="num">03</span>
+          <div class="cap"><small>IN-HOUSE SALES</small><strong>원내거래 지원</strong></div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>로컬부터 세미급·종합병원까지 원내/원외 거래</li>
+            <li>주사제 최고 수수료</li>
+            <li>빠른 배송과 안정적인 공급</li>
+            <li>전 진료과에 맞는 품목 매칭 지원</li>
+          </ul>
+        </div>
+      </article>
+      <article class="svc-item">
+        <div class="ph">
+          <img src="{{ url_for('static', filename='img/svc-03.jpg') }}" alt="" loading="lazy">
+          <span class="num">04</span>
           <div class="cap"><small>ACCOUNTABILITY CONSULTING</small><strong>개원·경영 컨설팅</strong></div>
         </div>
         <div class="body">
@@ -432,21 +447,6 @@ button,input,select,textarea{font:inherit}
             <li>노무·세무·법률 자문 파트너사 중계</li>
             <li>사업 형태와 매출 규모에 맞는 맞춤 컨설팅</li>
             <li>병의원 운영 노하우와 의료 정보 제공</li>
-          </ul>
-        </div>
-      </article>
-      <article class="svc-item">
-        <div class="ph">
-          <img src="{{ url_for('static', filename='img/svc-04.jpg') }}" alt="" loading="lazy">
-          <span class="num">04</span>
-          <div class="cap"><small>IN-HOUSE SALES</small><strong>원내거래 지원</strong></div>
-        </div>
-        <div class="body">
-          <ul>
-            <li>로컬부터 세미급·종합병원까지 원내/원외 거래</li>
-            <li>만 단위 취급 품목의 다양한 포트폴리오</li>
-            <li>신속한 견적과 안정적인 공급</li>
-            <li>전 진료과에 맞는 품목 매칭 지원</li>
           </ul>
         </div>
       </article>
@@ -465,16 +465,6 @@ button,input,select,textarea{font:inherit}
     <form class="form reveal" id="frm" novalidate>
       <div class="fi"><input id="f-name" type="text" placeholder="성함" required></div>
       <div class="fi"><input id="f-tel" type="tel" placeholder="연락처" required></div>
-      <div class="fi">
-        <select id="f-type">
-          <option value="">문의 유형을 선택해주세요</option>
-          <option>CSO 품목 거래</option>
-          <option>개원컨설팅</option>
-          <option>병원마케팅</option>
-          <option>영업 파트너 지원</option>
-          <option>기타 문의</option>
-        </select>
-      </div>
       <div class="fi"><textarea id="f-msg" placeholder="문의내용을 입력해주세요."></textarea></div>
       <!-- 허니팟(스팸봇 차단용) : 사람에게는 보이지 않음 -->
       <div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true">
@@ -492,27 +482,27 @@ button,input,select,textarea{font:inherit}
     <div class="visit-grid">
       <div class="map reveal reveal-fade">
         <iframe
-          src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%ED%9A%A8%EC%9A%B0%EB%A1%9C+136&t=m&z=16&hl=ko&output=embed"
+          src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EC%A4%91%ED%9D%A5%EB%A1%9C+153-14&t=m&z=17&hl=ko&output=embed"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen title="세인약품 위치 (광주광역시 남구 효우로 136)"></iframe>
+          allowfullscreen title="세인약품 위치 (광주광역시 북구 중흥로 153-14)"></iframe>
       </div>
       <div class="visit-info reveal-group">
         <h2>SEIN<br>PHARM</h2>
         <div class="vrow">
           <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.9 2 4.5 5.4 4.5 9.5c0 5.6 6.7 11.9 7 12.2.3.3.8.3 1.1 0 .3-.3 6.9-6.6 6.9-12.2C19.5 5.4 16.1 2 12 2zm0 10.3c-1.6 0-2.8-1.3-2.8-2.8S10.4 6.7 12 6.7s2.8 1.3 2.8 2.8-1.2 2.8-2.8 2.8z"/></svg></div>
-          <div><h4>회사위치</h4><p>광주광역시 남구 효우로 136, 3층(노대동)</p></div>
+          <div><h4>회사위치</h4><p>광주광역시 북구 중흥로 153-14, 204호</p></div>
         </div>
         <div class="vrow">
           <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.2 13.2c-.2.4-.7.5-1 .3l-3.7-2.1c-.3-.2-.5-.5-.5-.9V6.8c0-.4.3-.8.8-.8s.8.3.8.8v5.2l3.4 2c.3.2.4.7.2 1.2z"/></svg></div>
-          <div><h4>영업시간</h4><p>평일 09:00 - 18:00</p></div>
+          <div><h4>영업시간</h4><p>평일 08:30 - 18:00</p></div>
         </div>
         <div class="vrow">
           <div class="vicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
-          <div><h4>문의</h4><p>예약 및 상담: 062-674-5167 ㅣ FAX: 062-674-5168</p></div>
+          <div><h4>문의</h4><p>예약 및 상담: 010-5143-8285</p></div>
         </div>
         <div class="vbtns">
-          <a class="vbtn" href="https://map.kakao.com/link/search/광주광역시 남구 효우로 136" target="_blank" rel="noopener">카카오맵 길찾기</a>
-          <a class="vbtn" href="tel:0626745167">문의전화 하기</a>
+          <a class="vbtn" href="https://map.kakao.com/link/search/광주광역시 북구 중흥로 153-14" target="_blank" rel="noopener">카카오맵 길찾기</a>
+          <a class="vbtn" href="tel:01051438285">문의전화 하기</a>
         </div>
       </div>
     </div>
@@ -525,7 +515,7 @@ button,input,select,textarea{font:inherit}
     <img class="ft-logo" src="{{ url_for('static', filename='img/logo-white.png') }}" alt="(주) 세인약품">
     <div class="name">주식회사 세인약품</div>
     대표 김동명 ㅣ 사업자등록번호 269-87-03193<br>
-    광주광역시 남구 효우로 136, 3층(노대동)<br>
+    광주광역시 북구 중흥로 153-14, 204호<br>
     TEL 062-674-5167 ㅣ FAX 062-674-5168 ㅣ E-mail <a href="mailto:seinmedicine@daum.net">seinmedicine@daum.net</a><br>
     © 2026 ALL RIGHTS RESERVED 세인약품.
   </div>
@@ -535,7 +525,7 @@ button,input,select,textarea{font:inherit}
 <div class="float">
   <a class="f1" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.5 2 10.8c0 2.7 1.8 5.1 4.5 6.5-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.7.1 1.4.2 2.2.2 5.5 0 10-3.5 10-7.6S17.5 3 12 3z"/></svg></span>카톡상담</a>
   <a class="f2" href="#inquiry"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span>상담문의</a>
-  <a class="f3" href="tel:0626745167"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>전화상담</a>
+  <a class="f3" href="tel:01051438285"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>전화상담</a>
   <a class="f4" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.2V21h3.8L17.9 9.9l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4c-.4-.4-1-.4-1.4 0l-1.9 1.9 3.8 3.8 1.9-1.9z"/></svg></span>블로그</a>
 </div>
 
@@ -592,7 +582,6 @@ document.getElementById('frm').addEventListener('submit',function(e){
     body:JSON.stringify({
       name:n,
       phone:t,
-      inquiry_type:document.getElementById('f-type').value,
       message:document.getElementById('f-msg').value.trim(),
       website:document.getElementById('f-website').value
     })
